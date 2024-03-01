@@ -1,0 +1,5 @@
+C:\Users\Даниил\Desktop\build\Desktop.exe
+C:\Users\Даниил\Desktop\build\Desktop.dll
+C:\Users\Даниил\Desktop\build\Desktop.deps.json
+C:\Users\Даниил\Desktop\build\Desktop.runtimeconfig.json
+C:\Users\Даниил\Desktop\build\Desktop.pdb
