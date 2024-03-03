@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Даниил\\Desktop\\Desktop.csproj": {}
+    "C:\\All\\Learning\\YandexContest\\Desktop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Даниил\\Desktop\\Desktop.csproj": {
+    "C:\\All\\Learning\\YandexContest\\Desktop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Даниил\\Desktop\\Desktop.csproj",
+        "projectUniqueName": "C:\\All\\Learning\\YandexContest\\Desktop.csproj",
         "projectName": "Desktop",
-        "projectPath": "C:\\Users\\Даниил\\Desktop\\Desktop.csproj",
+        "projectPath": "C:\\All\\Learning\\YandexContest\\Desktop.csproj",
         "packagesPath": "C:\\Users\\Даниил\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Даниил\\Desktop\\obj\\",
+        "outputPath": "C:\\All\\Learning\\YandexContest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Даниил\\AppData\\Roaming\\NuGet\\NuGet.Config",
