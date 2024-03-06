@@ -11,7 +11,7 @@ class Program
         int[] numbers = new int[n];
         for (int i = 0; i < n; i++){
 
-            numbers[i] = (Convert.ToInt64(Line[i]) % 2 == 0)? 2:1;
+            numbers[i] = (Convert.ToInt64(Line[i]) % 2 == 0)? 0:1;
         }
 
         List<string> Symbols = GenCombSymbols(numbers.Length - 1);
