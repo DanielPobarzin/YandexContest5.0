@@ -1,68 +1,116 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 
 class Program
 {
     static void Main()
     {
-        int n = Convert.ToInt32(Console.ReadLine());
-        string[] Line = Console.ReadLine().Split(' ');
-        int[] numbers = new int[n];
-        for (int i = 0; i < n; i++){
+        int n = int.Parse(Console.ReadLine());
+        int year = int.Parse(Console.ReadLine());
 
-            numbers[i] = (Convert.ToInt64(Line[i]) % 2 == 0)? 0:1;
-        }
-
-        List<string> Symbols = GenCombSymbols(numbers.Length - 1);
-
-         foreach (string combination in Symbols) 
+        Dictionary<string, int> daysOfWeek = new Dictionary<string, int>()
         {
-           string expression = GenExpression(combination, numbers);
-            DataTable equation = new DataTable();
-           int result = Convert.ToInt32(equation.Compute(expression, ""));
-                if (result % 2 != 0)
-                {
-                    Console.WriteLine(combination);
-                     break;
-                }
-        }
-    }   
-    static List<string> GenCombSymbols(int n)
-    {
-        List<string> Symbols = new List<string>();
-        GenerateComb(n, "", Symbols);
-        return Symbols;
-    }
+            {"Monday", 0},
+            {"Tuesday", 1},
+            {"Wednesday", 2},
+            {"Thursday", 3},
+            {"Friday", 4},
+            {"Saturday", 5},
+            {"Sunday", 6}
+        };
 
-    static void GenerateComb(int n, string nowSymbols, List<string> Symbols)
-    {
-        if (n == 0)
+        Dictionary<int, string> months = new Dictionary<int, string>()
         {
-            Symbols.Add(nowSymbols);
-            return;
+            {1, "January"},
+            {2, "February"},
+            {3, "March"},
+            {4, "April"},
+            {5, "May"},
+            {6, "June"},
+            {7, "July"},
+            {8, "August"},
+            {9, "September"},
+            {10, "October"},
+            {11, "November"},
+            {12, "December"}
+        };
+
+        Dictionary<string, int> daysInMonth = new Dictionary<string, int>()
+        {
+            {"January", 31},
+            {"February", DateTime.IsLeapYear(year) ? 29 : 28},
+            {"March", 31},
+            {"April", 30},
+            {"May", 31},
+            {"June", 30},
+            {"July", 31},
+            {"August", 31},
+            {"September", 30},
+            {"October", 31},
+            {"November", 30},
+            {"December", 31}
+        };
+
+        List<string> holidays = new List<string>();
+        for (int i = 0; i < n; i++)
+        {
+            string[] holidayTokens = Console.ReadLine().Split(' ');
+            string month = holidayTokens[1];
+            int day = int.Parse(holidayTokens[0]);
+            string holiday = month + " " + day;
+            holidays.Add(holiday);
         }
 
-        GenerateComb(n - 1, nowSymbols + "x", Symbols);
-        GenerateComb(n - 1, nowSymbols + "+", Symbols);
-    }
+        string firstDayOfWeek = Console.ReadLine();
 
-     static string GenExpression(string combination , int[] numbers)
-    {
-         string expression = numbers[0].ToString();
-            for (int i = 0; i < combination.Length; i++)
+        int maxRestDays = 0;
+        int minRestDays = int.MaxValue;
+        string bestDayOfWeek = "";
+        string worstDayOfWeek = "";
+
+        foreach (KeyValuePair<string, int> dayOfWeek in daysOfWeek)
+        {
+            int restDays = 0;
+            string currentDayOfWeek = dayOfWeek.Key;
+
+            for (int month = 1; month <= 12; month++)
             {
-                if (combination[i] == 'x')
+                string currentMonth = months[month];
+                int daysInCurrentMonth = daysInMonth[currentMonth];
+
+                for (int day = 1; day <= daysInCurrentMonth; day++)
                 {
-                    expression += " * ";
+                    string currentDate = currentMonth + " " + day;
+
+                    if (currentDayOfWeek == firstDayOfWeek || holidays.Contains(currentDate))
+                    {
+                        restDays++;
+                    }
+
+                    if (currentDayOfWeek == "Sunday")
+                    {
+                        currentDayOfWeek = "Monday";
+                    }
+                    else
+                    {
+                        currentDayOfWeek = daysOfWeek.Keys.ToArray()[Array.IndexOf(daysOfWeek.Keys.ToArray(), currentDayOfWeek) + 1];
+                    }
                 }
-                else if (combination[i] == '+')
-                {
-                    expression += " + ";
-                }
-                expression = expression + numbers[i + 1].ToString();
             }
-            return expression;
+
+            if (restDays > maxRestDays)
+            {
+                maxRestDays = restDays;
+                bestDayOfWeek = dayOfWeek.Key;
+            }
+
+            if (restDays < minRestDays)
+            {
+                minRestDays = restDays;
+                worstDayOfWeek = dayOfWeek.Key;
+            }
+        }
+
+        Console.WriteLine(bestDayOfWeek + " " + worstDayOfWeek);
     }
-       
-} 
+}
