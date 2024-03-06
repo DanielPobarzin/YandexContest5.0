@@ -1,0 +1,15 @@
+C:\All\Learning\YandexContest\bin\Debug\net8.0\YandexContest.exe
+C:\All\Learning\YandexContest\bin\Debug\net8.0\YandexContest.deps.json
+C:\All\Learning\YandexContest\bin\Debug\net8.0\YandexContest.runtimeconfig.json
+C:\All\Learning\YandexContest\bin\Debug\net8.0\YandexContest.dll
+C:\All\Learning\YandexContest\bin\Debug\net8.0\YandexContest.pdb
+C:\All\Learning\YandexContest\obj\Debug\net8.0\YandexContest.GeneratedMSBuildEditorConfig.editorconfig
+C:\All\Learning\YandexContest\obj\Debug\net8.0\YandexContest.AssemblyInfoInputs.cache
+C:\All\Learning\YandexContest\obj\Debug\net8.0\YandexContest.AssemblyInfo.cs
+C:\All\Learning\YandexContest\obj\Debug\net8.0\YandexContest.csproj.CoreCompileInputs.cache
+C:\All\Learning\YandexContest\obj\Debug\net8.0\YandexContest.sourcelink.json
+C:\All\Learning\YandexContest\obj\Debug\net8.0\YandexContest.dll
+C:\All\Learning\YandexContest\obj\Debug\net8.0\refint\YandexContest.dll
+C:\All\Learning\YandexContest\obj\Debug\net8.0\YandexContest.pdb
+C:\All\Learning\YandexContest\obj\Debug\net8.0\YandexContest.genruntimeconfig.cache
+C:\All\Learning\YandexContest\obj\Debug\net8.0\ref\YandexContest.dll

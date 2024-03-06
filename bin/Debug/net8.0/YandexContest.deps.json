@@ -6,15 +6,15 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v8.0": {
-      "Desktop/1.0.0": {
+      "YandexContest/1.0.0": {
         "runtime": {
-          "Desktop.dll": {}
+          "YandexContest.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "Desktop/1.0.0": {
+    "YandexContest/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
