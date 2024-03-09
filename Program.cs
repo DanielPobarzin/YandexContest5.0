@@ -4,30 +4,30 @@ class Program
 {
     static void Main()
     {
-        int K = Convert.ToInt32(Console.ReadLine());
-        int[] x = new int[K];
-        int[] y = new int[K];
-        for (int i = 0; i < K; i++)
+        string[] input = Console.ReadLine().Split(" ");
+        int N = Convert.ToInt32(input[0]);
+        int K = Convert.ToInt32(input[1]);
+
+        int[] price = new int[N];
+        input = Console.ReadLine().Split(" ");
+        for (int i = 0; i < N; i++)
         {
-            string[] coordinates = Console.ReadLine().Split(' ');
-            x[i] = Convert.ToInt32(coordinates[0]);
-            y[i] = Convert.ToInt32(coordinates[1]);
+            price[i] = Convert.ToInt32(input[i]);
         }
 
-        int minX = x[0], maxX = x[0];
-        int minY = y[0], maxY =  y[0];
-        for (int i = 0; i < K; i++)
+        int maxP = 0;
+        for (int i = 0; i < N; i++)
         {
-            if (x[i] < minX)
-                minX = x[i];
-            if (x[i] > maxX)
-                maxX = x[i];
-            if (y[i] < minY)
-                minY = y[i];
-            if (y[i] > maxY)
-                maxY = y[i];
+            for (int j = i + 1; j <= Math.Min(i + K, N - 1); j++)
+            {
+                int p = price[j] - price[i];
+                if (p > maxP)
+                {
+                    maxP = p;
+                }
+            }
         }
 
-        Console.WriteLine(minX + " " + minY +" "+ maxX + " " + maxY);
+        Console.WriteLine(maxP);
     }
 }
