@@ -1,68 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 
 class Program
 {
     static void Main()
     {
-        int n = Convert.ToInt32(Console.ReadLine());
-        string[] Line = Console.ReadLine().Split(' ');
-        int[] numbers = new int[n];
-        for (int i = 0; i < n; i++){
-
-            numbers[i] = (Convert.ToInt64(Line[i]) % 2 == 0)? 0:1;
-        }
-
-        List<string> Symbols = GenCombSymbols(numbers.Length - 1);
-
-         foreach (string combination in Symbols) 
+        int K = Convert.ToInt32(Console.ReadLine());
+        int[] x = new int[K];
+        int[] y = new int[K];
+        for (int i = 0; i < K; i++)
         {
-           string expression = GenExpression(combination, numbers);
-            DataTable equation = new DataTable();
-           int result = Convert.ToInt32(equation.Compute(expression, ""));
-                if (result % 2 != 0)
-                {
-                    Console.WriteLine(combination);
-                     break;
-                }
+            string[] coordinates = Console.ReadLine().Split(' ');
+            x[i] = Convert.ToInt32(coordinates[0]);
+            y[i] = Convert.ToInt32(coordinates[1]);
         }
-    }   
-    static List<string> GenCombSymbols(int n)
-    {
-        List<string> Symbols = new List<string>();
-        GenerateComb(n, "", Symbols);
-        return Symbols;
-    }
 
-    static void GenerateComb(int n, string nowSymbols, List<string> Symbols)
-    {
-        if (n == 0)
+        int minX = x[0], maxX = x[0];
+        int minY = y[0], maxY =  y[0];
+        for (int i = 0; i < K; i++)
         {
-            Symbols.Add(nowSymbols);
-            return;
+            if (x[i] < minX)
+                minX = x[i];
+            if (x[i] > maxX)
+                maxX = x[i];
+            if (y[i] < minY)
+                minY = y[i];
+            if (y[i] > maxY)
+                maxY = y[i];
         }
 
-        GenerateComb(n - 1, nowSymbols + "x", Symbols);
-        GenerateComb(n - 1, nowSymbols + "+", Symbols);
+        Console.WriteLine(minX + " " + minY +" "+ maxX + " " + maxY);
     }
-
-     static string GenExpression(string combination , int[] numbers)
-    {
-         string expression = numbers[0].ToString();
-            for (int i = 0; i < combination.Length; i++)
-            {
-                if (combination[i] == 'x')
-                {
-                    expression += " * ";
-                }
-                else if (combination[i] == '+')
-                {
-                    expression += " + ";
-                }
-                expression = expression + numbers[i + 1].ToString();
-            }
-            return expression;
-    }
-       
-} 
+}
