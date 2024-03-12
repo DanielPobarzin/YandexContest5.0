@@ -4,29 +4,38 @@ class Program
 {
     static void Main()
     {
-        int N = int.Parse(Console.ReadLine());
-        string[] lengths = Console.ReadLine().Split();
-        int[] ropes = new int[N];
-        int AllRops = 0;
-        int minRopeLength = 0;
+        int N = Convert.ToInt32(Console.ReadLine());
+        int[,] cells = new int [N,2];
         for (int i = 0; i < N; i++)
         {
-            ropes[i] = int.Parse(lengths[i]);
-        }
-        Array.Sort(ropes);
-        for (int i = 0; i < N - 1; i++)
-        {
-            AllRops += ropes[i];
+            string[] input = Console.ReadLine().Split();
+            cells[i,0] = Convert.ToInt32(input[0]);
+            cells[i,1] = Convert.ToInt32(input[1]);
         }
 
-        if (AllRops < ropes[N-1]){
-            minRopeLength = ropes[N-1] - AllRops;
-        } else if (AllRops == ropes[N-1]) {
-            minRopeLength = AllRops * 2;
-        } else if (AllRops > ropes[N-1]){
-             minRopeLength = AllRops + ropes[N-1];
-        }
-
-        Console.WriteLine(minRopeLength);
+        int perimeter = Perimeter(cells);
+        Console.WriteLine(perimeter);
     }
+
+    static int Perimeter(int[,] cells)
+    {
+        int perimeter = 4 * cells.GetLength(0);
+        int[] directRow = { 0, 1, 0, -1 };
+        int[] directColumn = { 1, 0, -1, 0 };
+
+        for (int i = 0; i < cells.GetLength(0); i++){
+            for (int j = 0; j < 4; j++){
+                int newRow = cells[i,0] + directRow[j];
+                int newCol = cells[i,1] + directColumn[j];
+                for (int k = 0; k < cells.GetLength(0); k++){
+                    if (cells[k,0] == newRow && cells[k,1] == newCol){
+                    perimeter--;
+                    break;
+                    }
+
+            }
+        }
+    }
+    return perimeter;
+}
 }
