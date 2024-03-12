@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("YandexContest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7c290e9e2c877e36a234eda033fbb496f08dc19b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ecf53321d404bd5dfc8f5ccbc6b7a870a96e908e")]
 [assembly: System.Reflection.AssemblyProductAttribute("YandexContest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("YandexContest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

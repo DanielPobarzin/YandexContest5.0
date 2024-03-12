@@ -4,30 +4,29 @@ class Program
 {
     static void Main()
     {
-        string[] input = Console.ReadLine().Split(" ");
-        int N = Convert.ToInt32(input[0]);
-        int K = Convert.ToInt32(input[1]);
-
-        int[] price = new int[N];
-        input = Console.ReadLine().Split(" ");
+        int N = int.Parse(Console.ReadLine());
+        string[] lengths = Console.ReadLine().Split();
+        int[] ropes = new int[N];
+        int AllRops = 0;
+        int minRopeLength = 0;
         for (int i = 0; i < N; i++)
         {
-            price[i] = Convert.ToInt32(input[i]);
+            ropes[i] = int.Parse(lengths[i]);
         }
-
-        int maxP = 0;
-        for (int i = 0; i < N; i++)
+        Array.Sort(ropes);
+        for (int i = 0; i < N - 1; i++)
         {
-            for (int j = i + 1; j <= Math.Min(i + K, N - 1); j++)
-            {
-                int p = price[j] - price[i];
-                if (p > maxP)
-                {
-                    maxP = p;
-                }
-            }
+            AllRops += ropes[i];
         }
 
-        Console.WriteLine(maxP);
+        if (AllRops < ropes[N-1]){
+            minRopeLength = ropes[N-1] - AllRops;
+        } else if (AllRops == ropes[N-1]) {
+            minRopeLength = AllRops * 2;
+        } else if (AllRops > ropes[N-1]){
+             minRopeLength = AllRops + ropes[N-1];
+        }
+
+        Console.WriteLine(minRopeLength);
     }
 }
